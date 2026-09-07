@@ -339,3 +339,75 @@ cat(
   sum(fgsea_results$padj < 0.05, na.rm = TRUE),
   "\n"
 )
+# Plot significant Hallmark pathways
+sig_pathways <- fgsea_results[
+  !is.na(padj) & padj < 0.05
+]
+
+# Order pathways by normalized enrichment score
+sig_pathways <- sig_pathways[
+  order(sig_pathways$NES)
+]
+
+# Clean pathway names for plotting
+pathway_labels <- gsub(
+  "^HALLMARK_",
+  "",
+  sig_pathways$pathway
+)
+
+pathway_labels <- gsub("_", " ", pathway_labels)
+
+# Colors indicate enrichment direction
+bar_colors <- ifelse(
+  sig_pathways$NES > 0,
+  "firebrick",
+  "steelblue"
+)
+
+dir.create(
+  "results/figures",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+png(
+  "results/figures/hallmark_enrichment.png",
+  width = 1200,
+  height = 800,
+  res = 120
+)
+
+par(mar = c(5, 15, 4, 2))
+
+barplot(
+  sig_pathways$NES,
+  names.arg = pathway_labels,
+  horiz = TRUE,
+  las = 1,
+  col = bar_colors,
+  border = NA,
+  xlab = "Normalized Enrichment Score (NES)",
+  main = "Hallmark Pathway Enrichment: Endometriosis vs Control"
+)
+
+abline(v = 0, lty = 2)
+
+legend(
+  "bottomright",
+  legend = c(
+    "Enriched toward Endometriosis",
+    "Enriched toward Control"
+  ),
+  fill = c("firebrick", "steelblue"),
+  border = NA,
+  bty = "n"
+)
+
+dev.off()
+
+cat(
+  "Saved pathway figure:",
+  "results/figures/hallmark_enrichment.png",
+  "\n"
+)

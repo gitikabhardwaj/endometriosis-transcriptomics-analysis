@@ -1,0 +1,12 @@
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Local data
+data/raw/
+data/processed/
+
+# Virtual environments
+venv/
+.env/

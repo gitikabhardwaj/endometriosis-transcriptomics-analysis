@@ -69,3 +69,58 @@ write.csv(
   "results/tables/deseq2_results.csv",
   row.names = FALSE
 )
+annotation_file <- "data/Human.GRCh38.p13.annot.tsv.gz"
+
+annotation <- read.delim(
+  annotation_file,
+  header = TRUE,
+  check.names = FALSE
+)
+
+# Make sure GeneID has the same type in both tables
+results_df$GeneID <- as.character(results_df$GeneID)
+annotation$GeneID <- as.character(annotation$GeneID)
+
+# Add selected gene annotation fields to DESeq2 results
+annotated_results <- merge(
+  results_df,
+  annotation[, c(
+    "GeneID",
+    "Symbol",
+    "Description",
+    "GeneType",
+    "EnsemblGeneID"
+  )],
+  by = "GeneID",
+  all.x = TRUE,
+  sort = FALSE
+)
+
+# Re-sort by adjusted p-value
+annotated_results <- annotated_results[
+  order(annotated_results$padj),
+]
+
+# Show the top 20 results
+print(
+  head(
+    annotated_results[, c(
+      "GeneID",
+      "Symbol",
+      "Description",
+      "GeneType",
+      "baseMean",
+      "log2FoldChange",
+      "pvalue",
+      "padj"
+    )],
+    20
+  )
+)
+
+# Save annotated results
+write.csv(
+  annotated_results,
+  "results/tables/deseq2_results_annotated.csv",
+  row.names = FALSE
+)

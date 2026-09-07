@@ -148,3 +148,62 @@ cat(
   sum(sig_005$log2FoldChange < 0),
   "\n"
 )
+# Volcano plot
+
+volcano_df <- annotated_results
+
+volcano_df$significance <- "Not significant"
+volcano_df$significance[
+  !is.na(volcano_df$padj) &
+  volcano_df$padj < 0.05 &
+  volcano_df$log2FoldChange > 0
+] <- "Upregulated"
+
+volcano_df$significance[
+  !is.na(volcano_df$padj) &
+  volcano_df$padj < 0.05 &
+  volcano_df$log2FoldChange < 0
+] <- "Downregulated"
+
+volcano_df$minus_log10_padj <- -log10(volcano_df$padj)
+
+dir.create("results/figures", recursive = TRUE, showWarnings = FALSE)
+
+png(
+  "results/figures/volcano_plot.png",
+  width = 1600,
+  height = 1200,
+  res = 180
+)
+
+plot(
+  volcano_df$log2FoldChange,
+  volcano_df$minus_log10_padj,
+  pch = 16,
+  col = ifelse(
+    volcano_df$significance == "Upregulated",
+    "firebrick",
+    ifelse(
+      volcano_df$significance == "Downregulated",
+      "steelblue",
+      "grey75"
+    )
+  ),
+  xlab = "Log2 Fold Change (Endometriosis vs Control)",
+  ylab = "-Log10 Adjusted P-value",
+  main = "Differential Expression in Endometriosis"
+)
+
+abline(
+  h = -log10(0.05),
+  lty = 2,
+  col = "darkgrey"
+)
+
+abline(
+  v = 0,
+  lty = 2,
+  col = "darkgrey"
+)
+
+dev.off()

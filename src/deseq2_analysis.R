@@ -38,3 +38,10 @@ dds <- DESeqDataSetFromMatrix(
 )
 
 dds
+keep <- rowSums(counts(dds) >= 10) >= 4
+
+dds_filtered <- dds[keep, ]
+
+cat("Genes before filtering:", nrow(dds), "\n")
+cat("Genes after filtering:", nrow(dds_filtered), "\n")
+cat("Genes removed:", nrow(dds) - nrow(dds_filtered), "\n")

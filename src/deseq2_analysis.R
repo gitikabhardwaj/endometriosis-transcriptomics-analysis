@@ -280,3 +280,41 @@ cat("Unique gene symbols used for GSEA:", length(ranks), "\n")
 
 head(ranks)
 tail(ranks)
+# Hallmark gene sets for human
+hallmark_df <- msigdbr(
+  species = "Homo sapiens",
+  collection = "H"
+)
+
+hallmark_pathways <- split(
+  hallmark_df$gene_symbol,
+  hallmark_df$gs_name
+)
+
+cat("Number of Hallmark pathways:", length(hallmark_pathways), "\n")
+
+# Run ranked gene-set enrichment
+fgsea_results <- fgsea(
+  pathways = hallmark_pathways,
+  stats = ranks,
+  minSize = 15,
+  maxSize = 500
+)
+
+# Sort by adjusted p-value
+fgsea_results <- fgsea_results[
+  order(fgsea_results$padj),
+]
+
+print(
+  head(
+    fgsea_results[, c(
+      "pathway",
+      "NES",
+      "pval",
+      "padj",
+      "size"
+    )],
+    15
+  )
+)

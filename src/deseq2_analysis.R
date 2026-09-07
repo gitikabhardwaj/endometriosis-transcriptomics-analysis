@@ -318,3 +318,24 @@ print(
     15
   )
 )
+fgsea_output <- as.data.frame(fgsea_results)
+
+# Convert leading-edge gene lists to text so they can be saved cleanly
+fgsea_output$leadingEdge <- vapply(
+  fgsea_output$leadingEdge,
+  paste,
+  collapse = ";",
+  FUN.VALUE = character(1)
+)
+
+write.csv(
+  fgsea_output,
+  "results/tables/hallmark_fgsea_results.csv",
+  row.names = FALSE
+)
+
+cat(
+  "Hallmark pathways with padj < 0.05:",
+  sum(fgsea_results$padj < 0.05, na.rm = TRUE),
+  "\n"
+)

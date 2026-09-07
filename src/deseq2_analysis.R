@@ -124,3 +124,27 @@ write.csv(
   "results/tables/deseq2_results_annotated.csv",
   row.names = FALSE
 )
+sig_005 <- subset(
+  annotated_results,
+  !is.na(padj) & padj < 0.05
+)
+
+sig_010 <- subset(
+  annotated_results,
+  !is.na(padj) & padj < 0.10
+)
+
+cat("Genes with padj < 0.05:", nrow(sig_005), "\n")
+cat("Genes with padj < 0.10:", nrow(sig_010), "\n")
+
+cat(
+  "Upregulated at padj < 0.05:",
+  sum(sig_005$log2FoldChange > 0),
+  "\n"
+)
+
+cat(
+  "Downregulated at padj < 0.05:",
+  sum(sig_005$log2FoldChange < 0),
+  "\n"
+)

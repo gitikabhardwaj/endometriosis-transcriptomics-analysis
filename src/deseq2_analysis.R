@@ -294,6 +294,7 @@ hallmark_pathways <- split(
 cat("Number of Hallmark pathways:", length(hallmark_pathways), "\n")
 
 # Run ranked gene-set enrichment
+set.seed(123)
 fgsea_results <- fgsea(
   pathways = hallmark_pathways,
   stats = ranks,
@@ -358,6 +359,13 @@ pathway_labels <- gsub(
 
 pathway_labels <- gsub("_", " ", pathway_labels)
 
+# Shorten the longest label for readability
+pathway_labels <- gsub(
+  "EPITHELIAL MESENCHYMAL TRANSITION",
+  "EPITHELIAL-MESENCHYMAL TRANSITION",
+  pathway_labels
+)
+
 # Colors indicate enrichment direction
 bar_colors <- ifelse(
   sig_pathways$NES > 0,
@@ -378,7 +386,7 @@ png(
   res = 120
 )
 
-par(mar = c(5, 20, 4, 2))
+par(mar = c(5, 23, 4, 2))
 
 barplot(
   sig_pathways$NES,

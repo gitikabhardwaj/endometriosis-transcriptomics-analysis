@@ -221,3 +221,34 @@ text(
   offset = 0.5
 )
 dev.off()
+# Create ranked gene list for downstream pathway analysis
+
+ranked_results <- annotated_results[
+  !is.na(annotated_results$stat) &
+  !is.na(annotated_results$Symbol) &
+  annotated_results$Symbol != "",
+]
+
+ranked_results <- ranked_results[
+  order(ranked_results$stat, decreasing = TRUE),
+]
+
+ranked_gene_list <- ranked_results[, c(
+  "GeneID",
+  "Symbol",
+  "stat",
+  "log2FoldChange",
+  "pvalue",
+  "padj"
+)]
+
+write.csv(
+  ranked_gene_list,
+  "results/tables/ranked_gene_list.csv",
+  row.names = FALSE
+)
+
+cat("Genes available for pathway ranking:", nrow(ranked_gene_list), "\n")
+
+print(head(ranked_gene_list, 10))
+print(tail(ranked_gene_list, 10))

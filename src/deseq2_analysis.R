@@ -252,3 +252,31 @@ cat("Genes available for pathway ranking:", nrow(ranked_gene_list), "\n")
 
 print(head(ranked_gene_list, 10))
 print(tail(ranked_gene_list, 10))
+library(fgsea)
+library(msigdbr)
+
+# Prepare ranked statistics for GSEA
+gsea_df <- ranked_gene_list[
+  !is.na(ranked_gene_list$stat) &
+  !is.na(ranked_gene_list$Symbol) &
+  ranked_gene_list$Symbol != "",
+]
+
+# Keep one entry per gene symbol
+gsea_df <- gsea_df[
+  order(abs(gsea_df$stat), decreasing = TRUE),
+]
+
+gsea_df <- gsea_df[
+  !duplicated(gsea_df$Symbol),
+]
+
+ranks <- gsea_df$stat
+names(ranks) <- gsea_df$Symbol
+
+ranks <- sort(ranks, decreasing = TRUE)
+
+cat("Unique gene symbols used for GSEA:", length(ranks), "\n")
+
+head(ranks)
+tail(ranks)

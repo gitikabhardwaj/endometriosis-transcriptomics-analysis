@@ -373,12 +373,12 @@ dir.create(
 
 png(
   "results/figures/hallmark_enrichment.png",
-  width = 1200,
+  width = 1400,
   height = 800,
   res = 120
 )
 
-par(mar = c(5, 15, 4, 2))
+par(mar = c(5, 20, 4, 2))
 
 barplot(
   sig_pathways$NES,

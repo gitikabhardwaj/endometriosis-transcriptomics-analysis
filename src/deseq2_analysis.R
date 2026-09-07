@@ -45,3 +45,11 @@ dds_filtered <- dds[keep, ]
 cat("Genes before filtering:", nrow(dds), "\n")
 cat("Genes after filtering:", nrow(dds_filtered), "\n")
 cat("Genes removed:", nrow(dds) - nrow(dds_filtered), "\n")
+dds_filtered <- DESeq(dds_filtered)
+
+results_deseq <- results(
+  dds_filtered,
+  contrast = c("group", "Endometriosis", "Control")
+)
+
+summary(results_deseq)

@@ -205,5 +205,19 @@ abline(
   lty = 2,
   col = "darkgrey"
 )
+# Label genes significant at FDR < 0.05
+label_df <- volcano_df[
+  !is.na(volcano_df$padj) &
+  volcano_df$padj < 0.05 &
+  !is.na(volcano_df$Symbol),
+]
 
+text(
+  x = label_df$log2FoldChange,
+  y = label_df$minus_log10_padj,
+  labels = label_df$Symbol,
+  pos = 3,
+  cex = 0.75,
+  offset = 0.5
+)
 dev.off()

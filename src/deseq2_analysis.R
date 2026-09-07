@@ -53,3 +53,19 @@ results_deseq <- results(
 )
 
 summary(results_deseq)
+results_df <- as.data.frame(results_deseq)
+
+results_df$GeneID <- rownames(results_df)
+
+results_df <- results_df[
+  order(results_df$padj),
+]
+
+head(results_df, 20)
+dir.create("results/tables", recursive = TRUE, showWarnings = FALSE)
+
+write.csv(
+  results_df,
+  "results/tables/deseq2_results.csv",
+  row.names = FALSE
+)

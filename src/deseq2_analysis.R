@@ -122,6 +122,7 @@ cat("Saved VST PCA figure: results/figures/vst_pca.png\n")
 results_deseq <- results(
   dds_filtered,
   contrast = c("group", "Endometriosis", "Control")
+  alpha = 0.05
 )
 
 summary(results_deseq)

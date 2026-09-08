@@ -554,3 +554,13 @@ cat(
   nrow(sig_pathways_output),
   "pathways\n"
 )
+# Save R session information for reproducibility
+sink("results/sessionInfo.txt")
+sessionInfo()
+sink()
+
+cat(
+  "Saved R session information:",
+  "results/sessionInfo.txt",
+  "\n"
+)

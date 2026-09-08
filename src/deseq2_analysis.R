@@ -221,32 +221,7 @@ cat(
   sum(sig_005$log2FoldChange < 0),
   "\n"
 )
-# Save compact summary of significant genes
-sig_genes_output <- sig_005[
-  order(sig_005$padj),
-  c(
-    "GeneID",
-    "Symbol",
-    "Description",
-    "GeneType",
-    "baseMean",
-    "log2FoldChange",
-    "pvalue",
-    "padj"
-  )
-]
 
-write.csv(
-  sig_genes_output,
-  "results/tables/significant_genes_fdr_0.05.csv",
-  row.names = FALSE
-)
-
-cat(
-  "Saved significant gene summary:",
-  nrow(sig_genes_output),
-  "genes\n"
-)
 # Save compact summary of significant genes
 sig_genes_output <- sig_005[
   order(sig_005$padj),
@@ -545,39 +520,7 @@ cat(
   "results/figures/hallmark_enrichment.png",
   "\n"
 )
-# Save compact summary of significant Hallmark pathways
-sig_pathways_output <- as.data.frame(sig_pathways)
 
-sig_pathways_output$leadingEdge <- vapply(
-  sig_pathways_output$leadingEdge,
-  paste,
-  collapse = ";",
-  FUN.VALUE = character(1)
-)
-
-sig_pathways_output <- sig_pathways_output[
-  order(sig_pathways_output$padj),
-  c(
-    "pathway",
-    "NES",
-    "pval",
-    "padj",
-    "size",
-    "leadingEdge"
-  )
-]
-
-write.csv(
-  sig_pathways_output,
-  "results/tables/significant_hallmark_pathways.csv",
-  row.names = FALSE
-)
-
-cat(
-  "Saved significant Hallmark pathway summary:",
-  nrow(sig_pathways_output),
-  "pathways\n"
-)
 # Save compact summary of significant Hallmark pathways
 sig_pathways_output <- as.data.frame(sig_pathways)
 

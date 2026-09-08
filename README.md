@@ -92,3 +92,48 @@ data/        Dataset documentation and metadata
 notebooks/   Exploratory analyses and notebooks
 src/         Reusable analysis scripts
 results/     Generated figures and analysis outputs
+```
+
+## Dataset
+
+This project uses GSE153740 from the NCBI Gene Expression Omnibus (GEO), a bulk RNA-seq dataset of mid-secretory eutopic endometrial samples.
+
+The analysis includes:
+
+- 4 samples from women with endometriosis
+- 4 control samples
+- 8 samples total
+
+Exploratory analysis uses the submitter-provided transcript-level expression matrix. Formal differential-expression analysis uses the NCBI-generated gene-level raw count matrix because DESeq2 requires count data rather than normalized FPKM values.
+
+## Reproducibility
+
+Exploratory data analysis is documented in:
+
+```text
+notebooks/01_data_exploration.ipynb
+```
+
+The R workflow for differential expression, annotation, and pathway enrichment is implemented in:
+
+```text
+src/deseq2_analysis.R
+```
+
+From the repository root, the R analysis can be run with:
+
+```bash
+Rscript src/deseq2_analysis.R
+```
+
+Key output tables are available under `results/tables/`, while generated figures are stored under `results/figures/`.
+
+## Limitations
+
+This analysis is exploratory and has several important limitations:
+
+- The cohort is small, with 4 endometriosis and 4 control samples.
+- PCA does not show clean global separation between disease groups.
+- The analysis does not include an independent validation cohort.
+- NCBI-generated gene-level counts are used for differential expression and may differ from the transcript-level quantification used in the original study.
+- Differentially expressed genes and enriched pathways should therefore be treated as hypotheses for further investigation rather than diagnostic or clinically validated biomarkers.

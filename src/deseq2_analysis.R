@@ -69,6 +69,56 @@ cat(
   "PC2 =", percent_var[2], "%",
   "\n"
 )
+# Save VST-based PCA plot
+dir.create(
+  "results/figures",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+png(
+  "results/figures/vst_pca.png",
+  width = 1000,
+  height = 800,
+  res = 120
+)
+
+colors <- ifelse(
+  pca_data$group == "Endometriosis",
+  "firebrick",
+  "steelblue"
+)
+
+plot(
+  pca_data$PC1,
+  pca_data$PC2,
+  col = colors,
+  pch = 19,
+  cex = 1.7,
+  xlab = paste0("PC1 (", percent_var[1], "%)"),
+  ylab = paste0("PC2 (", percent_var[2], "%)"),
+  main = "VST PCA: Endometriosis vs Control"
+)
+
+text(
+  pca_data$PC1,
+  pca_data$PC2,
+  labels = pca_data$sample,
+  pos = 3,
+  cex = 0.85
+)
+
+legend(
+  "topright",
+  legend = c("Endometriosis", "Control"),
+  col = c("firebrick", "steelblue"),
+  pch = 19,
+  bty = "n"
+)
+
+dev.off()
+
+cat("Saved VST PCA figure: results/figures/vst_pca.png\n")
 results_deseq <- results(
   dds_filtered,
   contrast = c("group", "Endometriosis", "Control")

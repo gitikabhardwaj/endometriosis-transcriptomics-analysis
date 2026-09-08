@@ -46,7 +46,29 @@ cat("Genes before filtering:", nrow(dds), "\n")
 cat("Genes after filtering:", nrow(dds_filtered), "\n")
 cat("Genes removed:", nrow(dds) - nrow(dds_filtered), "\n")
 dds_filtered <- DESeq(dds_filtered)
+# Variance-stabilizing transformation for sample-level QC
+vsd <- vst(dds_filtered, blind = TRUE)
 
+# PCA using transformed counts
+pca_data <- plotPCA(
+  vsd,
+  intgroup = "group",
+  returnData = TRUE
+)
+
+percent_var <- round(
+  100 * attr(pca_data, "percentVar"),
+  1
+)
+
+print(pca_data)
+
+cat(
+  "VST PCA variance explained:",
+  "PC1 =", percent_var[1], "%",
+  "PC2 =", percent_var[2], "%",
+  "\n"
+)
 results_deseq <- results(
   dds_filtered,
   contrast = c("group", "Endometriosis", "Control")

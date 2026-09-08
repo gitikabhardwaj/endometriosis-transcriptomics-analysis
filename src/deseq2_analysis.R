@@ -387,7 +387,7 @@ png(
   res = 120
 )
 
-par(mar = c(5, 23, 4, 2))
+par(mar = c(5, 20, 4, 2))
 
 barplot(
   sig_pathways$NES,

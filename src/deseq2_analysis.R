@@ -295,6 +295,7 @@ cat("Number of Hallmark pathways:", length(hallmark_pathways), "\n")
 
 # Run ranked gene-set enrichment
 set.seed(123)
+
 fgsea_results <- fgsea(
   pathways = hallmark_pathways,
   stats = ranks,
@@ -362,7 +363,7 @@ pathway_labels <- gsub("_", " ", pathway_labels)
 # Shorten the longest label for readability
 pathway_labels <- gsub(
   "EPITHELIAL MESENCHYMAL TRANSITION",
-  "EPITHELIAL-MESENCHYMAL TRANSITION",
+  "EPITHELIAL-MESENCHYMAL TRANS.",
   pathway_labels
 )
 

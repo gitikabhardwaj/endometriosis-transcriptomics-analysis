@@ -2,46 +2,46 @@
 
 ## Overview
 
-This project explores publicly available transcriptomic datasets to investigate molecular signatures associated with endometriosis.
+This project analyzes publicly available RNA-seq data to investigate transcriptomic differences associated with endometriosis.
 
-The goal is to build a reproducible bioinformatics workflow for transcriptomic data processing, exploratory analysis, differential gene expression, pathway analysis, and eventual evaluation of machine learning approaches for biomarker discovery.
+Using the NCBI GEO dataset GSE153740, I developed a reproducible workflow to compare mid-secretory eutopic endometrial samples from women with endometriosis and controls (n=4 per group).
 
-This project is currently in progress.
+The analysis includes sample-level quality assessment, differential gene expression using DESeq2, gene annotation, and ranked gene-set enrichment analysis using MSigDB Hallmark pathways.
+
+Given the small cohort, results are interpreted as exploratory rather than as clinically validated biomarkers.
 
 ## Research Questions
 
-This project aims to explore questions such as:
+- Do endometriosis and control samples show distinct global transcriptomic patterns?
+- Which genes differ in expression between endometriosis and control samples?
+- Which biological pathways show coordinated enrichment across the ranked transcriptome?
+- How should gene- and pathway-level findings be interpreted given sample-level heterogeneity and limited cohort size?
 
-- Which genes show differential expression between endometriosis and control samples?
-- Which biological pathways are enriched among differentially expressed genes?
-- Are there transcriptomic patterns that distinguish disease and control samples?
-- Can machine learning approaches help identify candidate molecular signatures associated with endometriosis?
+## Analysis Workflow
 
-## Planned Workflow
-
-1. Identify and acquire relevant public datasets from NCBI GEO
-2. Inspect sample metadata and experimental design
-3. Perform data preprocessing and quality control
-4. Conduct exploratory data analysis
-5. Perform differential gene expression analysis
-6. Conduct pathway and gene-set enrichment analysis
-7. Explore machine learning approaches for transcriptomic classification
-8. Generate reproducible visualizations and documentation
+1. Selected and evaluated human endometriosis RNA-seq dataset GSE153740
+2. Reviewed sample metadata and experimental design
+3. Assessed sequencing depth and filtered low-count genes
+4. Applied variance-stabilizing transformation for sample-level PCA
+5. Performed differential expression analysis with DESeq2
+6. Annotated gene-level differential-expression results
+7. Ranked genes using DESeq2 Wald statistics
+8. Performed Hallmark gene-set enrichment analysis with fgsea and MSigDB
+9. Generated PCA, volcano, and pathway-enrichment visualizations
 
 ## Tools
 
-Planned tools include:
-
-- Python
 - R
+- DESeq2
+- fgsea
+- msigdbr / MSigDB Hallmark gene sets
+- Python
 - pandas
 - NumPy
 - matplotlib / seaborn
-- scikit-learn
-- Bioconductor packages
 - Jupyter Notebook
+- Git / GitHub
 
-Additional tools will be added as the analysis develops.
 ## Results Summary
 
 ### Sample-level variation

@@ -328,10 +328,14 @@ label_df <- volcano_df[
 ]
 
 # Label the 8 most statistically significant genes for readability
+<<<<<<< HEAD
 label_df <- label_df[
   order(label_df$padj),
 ]
 
+=======
+label_df <- label_df[order(label_df$padj), ]
+>>>>>>> 9c70003 (Improve volcano plot readability)
 label_df <- head(label_df, 8)
 
 # Stagger labels vertically to reduce overlap
@@ -623,3 +627,5 @@ cat(
   "results/sessionInfo.txt",
   "\n"
 )
+
+

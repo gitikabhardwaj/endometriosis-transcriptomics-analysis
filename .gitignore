@@ -10,3 +10,6 @@ data/processed/
 # Virtual environments
 venv/
 .env/
+results/tables/deseq2_results.csv
+results/tables/deseq2_results_annotated.csv
+results/tables/ranked_gene_list.csv

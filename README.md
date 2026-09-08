@@ -85,6 +85,7 @@ The cohort does not show clear global transcriptomic separation by disease statu
 However, the analysis identifies a focused set of gene-level differences and coordinated pathway-level signals that may warrant further investigation in larger independent cohorts.
 
 These findings should be considered exploratory and should not be interpreted as clinically validated biomarkers.
+
 ## Repository Structure
 
 ```text
@@ -105,6 +106,21 @@ The analysis includes:
 - 8 samples total
 
 Exploratory analysis uses the submitter-provided transcript-level expression matrix. Formal differential-expression analysis uses the NCBI-generated gene-level raw count matrix because DESeq2 requires count data rather than normalized FPKM values.
+
+## Data Source and Citation
+
+This project analyzes the publicly available **GSE153740** RNA-seq dataset from the NCBI Gene Expression Omnibus (GEO). The dataset contains mid-secretory phase eutopic endometrial samples from women with endometriosis (n = 4) and controls without endometriosis (n = 4).
+
+**GEO accession:** GSE153740
+**BioProject:** PRJNA643840
+**SRA:** SRP269814
+
+The original study processed RNA-seq reads using a workflow including Cutadapt, HISAT2, Cufflinks, and Cuffdiff and provided transcript-level FPKM expression estimates. This project uses the submitter-provided transcript expression matrix for exploratory analysis and the NCBI-generated gene-level raw count matrix for the DESeq2 differential expression workflow. Because the gene-level counts were generated independently by NCBI rather than by reproducing the original study's transcript-level pipeline, results from this analysis are not expected to exactly reproduce the published results.
+
+### Original Study
+
+Bane K, Desouza J, Shetty D, et al. **Endometrial DNA damage response is modulated in endometriosis.** *Human Reproduction.* 2021;36(1):160–174. doi:10.1093/humrep/deaa255. PMID: 33246341.
+
 
 ## Reproducibility
 
@@ -127,6 +143,8 @@ Rscript src/deseq2_analysis.R
 ```
 
 Key output tables are available under `results/tables/`, while generated figures are stored under `results/figures/`.
+
+R and Bioconductor package versions used for the analysis are recorded in `results/sessionInfo.txt`.
 
 ## Limitations
 

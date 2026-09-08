@@ -290,7 +290,7 @@ plot(
     )
   ),
   xlab = "Log2 Fold Change (Endometriosis vs Control)",
-  ylab = "-Log10 Adjusted P-value",
+  ylab = "-log10(FDR-adjusted p-value)",
   main = "Differential Expression in Endometriosis"
 )
 
@@ -305,21 +305,72 @@ abline(
   lty = 2,
   col = "darkgrey"
 )
+
+legend(
+  "bottomright",
+  legend = c(
+    "Higher in Endometriosis",
+    "Lower in Endometriosis",
+    "Not significant"
+  ),
+  col = c("firebrick", "steelblue", "grey75"),
+  pch = 16,
+  bty = "n",
+  cex = 0.8
+)
+
 # Label genes significant at FDR < 0.05
 label_df <- volcano_df[
   !is.na(volcano_df$padj) &
   volcano_df$padj < 0.05 &
-  !is.na(volcano_df$Symbol),
+  !is.na(volcano_df$Symbol) &
+  volcano_df$Symbol != "",
 ]
+
+# Stagger labels vertically to reduce overlap
+label_df$label_y <- label_df$minus_log10_padj
+
+positive_idx <- which(label_df$log2FoldChange > 0)
+negative_idx <- which(label_df$log2FoldChange < 0)
+
+if (length(positive_idx) > 1) {
+  positive_idx <- positive_idx[
+    order(label_df$log2FoldChange[positive_idx])
+  ]
+
+  label_df$label_y[positive_idx] <-
+    label_df$minus_log10_padj[positive_idx] +
+    seq(0.08, 0.45, length.out = length(positive_idx))
+}
+
+if (length(negative_idx) > 1) {
+  negative_idx <- negative_idx[
+    order(label_df$log2FoldChange[negative_idx])
+  ]
+
+  label_df$label_y[negative_idx] <-
+    label_df$minus_log10_padj[negative_idx] +
+    seq(0.08, 0.40, length.out = length(negative_idx))
+}
+
+segments(
+  x0 = label_df$log2FoldChange,
+  y0 = label_df$minus_log10_padj,
+  x1 = label_df$log2FoldChange,
+  y1 = label_df$label_y,
+  col = "grey50",
+  lwd = 0.7
+)
 
 text(
   x = label_df$log2FoldChange,
-  y = label_df$minus_log10_padj,
+  y = label_df$label_y,
   labels = label_df$Symbol,
   pos = 3,
-  cex = 0.75,
-  offset = 0.5
+  cex = 0.72,
+  offset = 0.25
 )
+
 dev.off()
 # Create ranked gene list for downstream pathway analysis
 

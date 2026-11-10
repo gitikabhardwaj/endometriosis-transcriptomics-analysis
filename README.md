@@ -61,7 +61,7 @@ Genes were retained if they had at least 10 counts in at least 4 samples. At an 
 
 Leading annotated signals included S100P, ORM1, MT1X, MT1F, STC1, LRRN1, ENC1, CBLN1, and LYPD6.
 
-Two of the twelve differentially expressed features carry uncharacterised LOC identifiers (LOC107986170, LOC100128653) rather than gene symbols. Both are among the most strongly significant features in the analysis, so the annotated list above is a partial view of the full result set; see `results/tables/` for the complete table.
+Two of the twelve differentially expressed features are uncharacterised loci rather than annotated genes — LOC100128653, a long non-coding RNA at 7p22.3 with no described function, and LOC107986170. Both remain unannotated in current reference databases, so their biological relevance is unknown, and I excluded them from the pathway interpretation above.
 
 ![Volcano plot of differential expression](results/figures/volcano_plot.png)
 

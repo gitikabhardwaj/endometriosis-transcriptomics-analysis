@@ -105,7 +105,7 @@ These findings should be considered exploratory and should not be interpreted as
 - Re-run the same workflow on a larger independent endometriosis cohort to test whether the gene and pathway signals replicate.
 - Target the top differentially expressed genes with a targeted assay (for example qPCR) rather than relying on a single small RNA-seq cohort.
 - Add covariate adjustment for cell-type composition, which is a plausible confounder in whole-tissue endometrial samples.
-- Identify and annotate the two LOC loci among the significant genes to determine whether they map to known transcripts.
+- Investigate whether the two uncharacterised loci correspond to functional transcripts in endometrial tissue.
 
 ## Repository Structure
 

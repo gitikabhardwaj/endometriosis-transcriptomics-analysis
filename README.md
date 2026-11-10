@@ -45,7 +45,7 @@ Given the small cohort, results are interpreted as exploratory rather than as cl
 
 Variance-stabilizing transformation followed by PCA showed substantial sample-level heterogeneity. PC1 and PC2 explained 68.6% and 19.0% of the total variance, respectively (87.6% combined).
 
-Endometriosis and control samples did not separate by disease status. The endometriosis group itself split: En1 and En2 separated from En3 and En4, and En3 and En4 clustered with two control samples (F14, F15), while the remaining controls (F9, F10) sat far from every other sample on PC1. Sample-level heterogeneity, rather than disease status, was the dominant source of global transcriptomic variation in this cohort.
+Endometriosis and control samples did not separate by disease status. The endometriosis group itself split: En1 and En2 separated from En3 and En6, and En3 sat between two control samples (F14, F15) with En6 nearby, while the remaining controls (F9, F10) sat far from every other sample on PC1. Sample-level heterogeneity, rather than disease status, was the dominant source of global transcriptomic variation in this cohort.
 
 ![VST PCA: endometriosis vs control](results/figures/vst_pca.png)
 
@@ -61,7 +61,7 @@ Genes were retained if they had at least 10 counts in at least 4 samples. At an 
 
 Leading annotated signals included S100P, ORM1, MT1X, MT1F, STC1, LRRN1, ENC1, CBLN1, and LYPD6.
 
-Two of the twelve differentially expressed features are uncharacterised loci rather than named genes. LOC100128653 is a long non-coding RNA at 7p22.3 with no described function; LOC107986170 is likewise listed as an uncharacterised locus. Their biological relevance is unknown, so they are not discussed further in the interpretation.
+Two of the twelve differentially expressed features are uncharacterised loci rather than named genes. LOC100128653 is a long non-coding RNA at 7p22.3 with no described function; LOC107986170 is likewise listed as an uncharacterised locus. Their biological relevance is unknown, so they are not discussed further in the interpretation. The complete results table is in `results/tables/`.
 
 ![Volcano plot of differential expression](results/figures/volcano_plot.png)
 
@@ -169,7 +169,7 @@ R and Bioconductor package versions used for the analysis are recorded in `resul
 This analysis is exploratory and has several important limitations:
 
 - The cohort is small, with 4 endometriosis and 4 control samples.
-- PCA does not show clean global separation between disease groups. Two endometriosis samples and two controls cluster together, so a single sample or two can shift the group-level picture.
+- PCA does not show clean global separation between disease groups. Endometriosis samples En3 and En6 sit near two controls, so a single sample or two can shift the group-level picture.
 - The analysis does not include an independent validation cohort.
 - NCBI-generated gene-level counts are used for differential expression and may differ from the transcript-level quantification used in the original study.
 - The metallothionein signal (MT1X, MT1F) should be checked against stress-response and sample-handling artefacts before being read as disease biology.

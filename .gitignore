@@ -1,21 +1,6 @@
-.DS_Store
-.ipynb_checkpoints/
-__pycache__/
-*.pyc
-
-# Local data
-data/raw/
-data/processed/
-
-# Virtual environments
-venv/
-.env/
-results/tables/deseq2_results.csv
-results/tables/deseq2_results_annotated.csv
-results/tables/ranked_gene_list.csv
-.Rproj.user
-data/external/
+data/external/*/
+data/external/GSE234354/
+!data/external/cohort_manifest.csv
+!data/external/README.md
 .Rhistory
-*.Rproj
-data/external/
-.Rhistory
+.RData

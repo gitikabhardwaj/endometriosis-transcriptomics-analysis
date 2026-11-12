@@ -1,0 +1,4 @@
+accession,total_geo_records,samples_with_counts,unique_biopsies,unique_women,duplicates_removed,valid_stage_metadata,stage5_7_records,stage5_7_one_per_woman,included_analyses
+GSE153740,8,8,8,8,0,8,0,0,discovery DESeq2 (4 vs 4)
+GSE6364,37,37,37,37,0,17,17,17,gene-level replication (9 vs 8) - preliminary
+GSE234354,295,290,259,272,16,257,117,114,cycle-stage drift (stages 5-7)

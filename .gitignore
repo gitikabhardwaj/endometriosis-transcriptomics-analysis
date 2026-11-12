@@ -17,3 +17,5 @@ results/tables/ranked_gene_list.csv
 data/external/
 .Rhistory
 *.Rproj
+data/external/
+.Rhistory

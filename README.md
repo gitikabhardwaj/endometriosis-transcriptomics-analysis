@@ -92,6 +92,52 @@ Enriched toward control:
 
 ![Hallmark pathway enrichment](results/figures/hallmark_enrichment.png)
 
+## Replication
+
+### GSE6364 — mid-secretory eutopic endometrium, 9 vs 8 (Affymetrix)
+
+Limma on log2 intensities; the GEO matrix is linear-scale and was log2(x+1)
+transformed; no quantile normalisation (already RMA-processed).
+
+| Measure | Result |
+| --- | --- |
+| Genes at FDR < 0.05, array-wide | 1 |
+| Candidate genes testable | 11 of 12 |
+| Candidate genes concordant in direction | 4 of 11 |
+| Best candidate p-value | LOC100128653, p = 0.006, FDR = 0.66 |
+
+Discovery log2 fold changes for the panel run 2.1–5.7; in GSE6364 the same genes
+run 0.04–0.64, a five- to ten-fold attenuation. Six of eleven candidates flipped
+direction, including S100P (+5.68 → −0.64), STC1 (+4.73 → −0.35) and MT1X
+(+2.74 → −0.34).
+
+### GSE234354 — secretory-stage drift in 114 non-disease biopsies
+
+| Gene | stage 5 | stage 6 | stage 7 | Δ (7−5) |
+| --- | --- | --- | --- | --- |
+| MT1X | 10.56 | 10.36 | 8.32 | −2.24 |
+| MT1F | 10.40 | 10.45 | 9.15 | −1.25 |
+| LYPD6 | 6.74 | 5.26 | 5.81 | −0.93 |
+| S100P | 7.23 | 8.91 | 6.39 | −0.84 |
+| ORM1 | 5.54 | 5.70 | 4.80 | −0.74 |
+| LRRN1 | 7.30 | 6.37 | 6.77 | −0.53 |
+| ENC1 | 8.93 | 8.66 | 9.43 | +0.50 |
+| STC1 | 9.59 | 11.10 | 9.84 | +0.26 |
+| CBLN1 | 5.28 | 5.58 | 5.21 | −0.07 |
+
+Median VST expression across stages 5–7, one biopsy per woman. MT1X and MT1F vary
+more across the secretory phase than any other candidate, so the metallothionein
+signal is confounded with cycle timing and sample handling and should not be read
+as disease biology.
+
+### Across three cohorts
+
+| Cohort | Design | Result |
+| --- | --- | --- |
+| GSE153740 (discovery) | 4 vs 4 RNA-seq | No separation by disease status; 12 DEGs |
+| GSE6364 | 9 vs 8 array, mid-secretory | 1 gene at FDR 0.05; 4 of 11 concordant |
+| GSE234354 | 27 vs 14 RNA-seq, mid-secretory | Not run — disease labels absent from GEO |
+
 ## Interpretation
 
 The cohort does not show clear global transcriptomic separation by disease status, and the small sample size limits statistical power and generalizability.

@@ -109,9 +109,9 @@ Analysis used limma on log2 intensities. The GEO series matrix is on the linear 
 
 Discovery log2 fold changes for the panel run 2.1–5.7; in GSE6364 the same genes run 0.04–0.64, a five- to ten-fold attenuation. Seven of the eleven candidates disagreed in direction (S100P, STC1, MT1X, MT1F, LYPD6, LRRN1, PTK7); four agreed (ORM1, LOC100128653, CBLN1, ENC1). Three of the strongest discovery signals reversed: S100P (+5.68 → −0.64), STC1 (+4.73 → −0.35) and MT1X (+2.74 → −0.34).
 
-### GSE234354: secretory-stage drift in 114 biopsies, unstratified by disease
+### GSE234354: secretory-stage drift in 117 biopsies, unstratified by disease
 
-GSE234354 is the bulk RNA-seq from a 206-woman endometriosis cohort (143 cases, 63 controls). The GEO release carries cycle stage, age, pod and batch for all 290 samples, but not endometriosis case/control status, so the per-sample disease test could not be run. An independent check was possible on the 114 biopsies at secretory stages 5–7 (one biopsy per woman). These were analysed without stratification by disease status: the cohort contains both endometriosis cases and controls, but per-sample labels were not available, so the stage analysis cannot test disease.
+GSE234354 is the bulk RNA-seq from a 206-woman endometriosis cohort (143 cases, 63 controls). The GEO release carries cycle stage, age, pod and batch for all 290 samples, but not endometriosis case/control status, so the per-sample disease test could not be run. An independent check was possible on the 117 biopsies at secretory stages 5–7 (one biopsy per woman). These were analysed without stratification by disease status: the cohort contains both endometriosis cases and controls, but per-sample labels were not available, so the stage analysis cannot test disease.
 
 | Gene | stage 5 | stage 6 | stage 7 | Δ (7−5) |
 | --- | --- | --- | --- | --- |
@@ -147,7 +147,7 @@ Request the GSM-to-case/control mapping for GSE234354 from the dataset authors. 
 
 The discovery cohort does not show clear global transcriptomic separation by disease status, and its small sample size limits statistical power and generalizability. The gene-level and pathway-level signals it identified should be read as hypotheses generated in that cohort, not as findings that survive independent testing.
 
-The discovery signals were not consistently reproduced in the independent microarray cohort (GSE6364, 9 vs 8), and effect sizes attenuated five- to ten-fold. That does not establish that they are artefacts: a nonsignificant replication can reflect limited power, platform differences, patient characteristics or preprocessing choices. A separate check in 114 biopsies analysed without stratification by disease shows that cycle-stage timing is a potential source of variation in several candidates, including the metallothioneins.
+The discovery signals were not consistently reproduced in the independent microarray cohort (GSE6364, 9 vs 8), and effect sizes attenuated five- to ten-fold. That does not establish that they are artefacts: a nonsignificant replication can reflect limited power, platform differences, patient characteristics or preprocessing choices. A separate check in 117 biopsies analysed without stratification by disease shows that cycle-stage timing is a potential source of variation in several candidates, including the metallothioneins.
 
 These findings should be considered exploratory and should not be interpreted as clinically validated biomarkers.
 
@@ -249,7 +249,7 @@ This analysis is exploratory and has several important limitations:
 - The discovery cohort is small, with 4 endometriosis and 4 control samples.
 - PCA does not show clean global separation between disease groups in the discovery cohort. Endometriosis samples En3 and En6 sit near two controls, so a single sample or two can shift the group-level picture.
 - One independent cohort (GSE6364, mid-secretory, 9 vs 8) underwent a disease comparison. Its gene-level result does not confirm the discovery: 2 genes at FDR < 0.05 array-wide, and 4 of 11 candidates concordant in direction, which is indistinguishable from chance (binomial p = 0.55). This is a preliminary analysis, because the GEO records describe GCOS global scaling rather than RMA preprocessing.
-- Cycle-stage timing is a potential source of variation in the candidate genes. In 114 biopsies analysed without stratification by disease, MT1X and MT1F showed the largest stage 5 to stage 7 changes (−2.24 and −1.25 VST units), while S100P had the larger peak-to-trough range (2.52). LRRN1, STC1 and ENC1 also showed nominal stage associations. An association with stage is not proof of confounding, which would require disease labels to test.
+- Cycle-stage timing is a potential source of variation in the candidate genes. In 117 biopsies analysed without stratification by disease, MT1X and MT1F showed the largest stage 5 to stage 7 changes (−2.24 and −1.25 VST units), while S100P had the larger peak-to-trough range (2.52). LRRN1, STC1 and ENC1 also showed nominal stage associations. An association with stage is not proof of confounding, which would require disease labels to test.
 - The GSE234354 27-vs-14 mid-secretory comparison has not been run, because the GEO release lacks per-sample disease labels. It is the highest-powered test available from public data.
 - GSE6364 is a microarray platform and its controls are described as women without endometriosis or with normal endometrial pathologies; platform and control-definition differences limit how strictly the two cohorts can be compared.
 - NCBI-generated gene-level counts are used for differential expression and may differ from the transcript-level quantification used in the original study.

@@ -20,37 +20,36 @@ attached base packages:
 [8] base     
 
 other attached packages:
- [1] dplyr_1.2.1                 limma_3.68.5               
- [3] GEOquery_2.80.1             data.table_1.18.6.1        
- [5] org.Hs.eg.db_3.23.1         AnnotationDbi_1.74.0       
- [7] msigdbr_26.1.1              fgsea_1.38.0               
- [9] DESeq2_1.52.0               SummarizedExperiment_1.42.0
-[11] Biobase_2.72.0              MatrixGenerics_1.24.0      
-[13] matrixStats_1.5.0           GenomicRanges_1.64.0       
-[15] Seqinfo_1.2.0               IRanges_2.46.0             
-[17] S4Vectors_0.50.3            BiocGenerics_0.58.1        
-[19] generics_0.1.4             
+ [1] org.Hs.eg.db_3.23.1         AnnotationDbi_1.74.0       
+ [3] limma_3.68.5                data.table_1.18.6.1        
+ [5] GEOquery_2.80.1             msigdbr_26.1.1             
+ [7] fgsea_1.38.0                DESeq2_1.52.0              
+ [9] SummarizedExperiment_1.42.0 Biobase_2.72.0             
+[11] MatrixGenerics_1.24.0       matrixStats_1.5.0          
+[13] GenomicRanges_1.64.0        Seqinfo_1.2.0              
+[15] IRanges_2.46.0              S4Vectors_0.50.3           
+[17] BiocGenerics_0.58.1         generics_0.1.4             
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.2.1    farver_2.1.2        blob_1.3.0         
- [4] R.utils_2.13.0      Biostrings_2.80.2   S7_0.2.2           
- [7] fastmap_1.2.0       XML_3.99-0.25       lifecycle_1.0.5    
-[10] statmod_1.5.2       KEGGREST_1.52.2     RSQLite_3.53.3     
-[13] magrittr_2.0.5      compiler_4.6.2      rlang_1.3.0        
-[16] tools_4.6.2         S4Arrays_1.12.1     bit_4.6.0          
-[19] curl_8.1.0          DelayedArray_0.38.2 xml2_1.6.0         
-[22] RColorBrewer_1.1-3  abind_1.4-8         BiocParallel_1.46.0
-[25] withr_3.0.3         purrr_1.2.2         R.oo_1.27.1        
-[28] grid_4.6.2          ggplot2_4.0.3       scales_1.4.0       
-[31] cli_3.6.6           crayon_1.5.3        httr_1.4.9         
-[34] tzdb_0.5.0          DBI_1.3.0           cachem_1.1.0       
-[37] assertthat_0.2.1    parallel_4.6.2      BiocManager_1.30.27
+ [1] tidyselect_1.2.1    dplyr_1.2.1         farver_2.1.2       
+ [4] blob_1.3.0          R.utils_2.13.0      Biostrings_2.80.2  
+ [7] S7_0.2.2            fastmap_1.2.0       XML_3.99-0.25      
+[10] lifecycle_1.0.5     statmod_1.5.2       KEGGREST_1.52.2    
+[13] RSQLite_3.53.3      magrittr_2.0.5      compiler_4.6.2     
+[16] rlang_1.3.0         tools_4.6.2         S4Arrays_1.12.1    
+[19] bit_4.6.0           curl_8.1.0          DelayedArray_0.38.2
+[22] xml2_1.6.0          RColorBrewer_1.1-3  abind_1.4-8        
+[25] BiocParallel_1.46.0 withr_3.0.3         purrr_1.2.2        
+[28] R.oo_1.27.1         grid_4.6.2          ggplot2_4.0.3      
+[31] scales_1.4.0        cli_3.6.6           crayon_1.5.3       
+[34] httr_1.4.9          tzdb_0.5.0          DBI_1.3.0          
+[37] cachem_1.1.0        assertthat_0.2.1    parallel_4.6.2     
 [40] XVector_0.52.0      vctrs_0.7.3         Matrix_1.7-6       
 [43] jsonlite_2.0.0      hms_1.1.4           bit64_4.8.6        
-[46] locfit_1.5-9.12     tidyr_1.3.2         glue_1.8.1         
-[49] codetools_0.2-20    cowplot_1.2.0       gtable_0.3.6       
-[52] tibble_3.3.1        pillar_1.11.1       R6_2.6.1           
-[55] httr2_1.3.0         lattice_0.23-1      readr_2.2.0        
-[58] rentrez_1.2.4       png_0.1-9           R.methodsS3_1.8.2  
-[61] memoise_2.0.1       Rcpp_1.1.2          fastmatch_1.1-8    
-[64] SparseArray_1.12.3  pkgconfig_2.0.3    
+[46] locfit_1.5-9.12     tidyr_1.3.2         snow_0.4-4         
+[49] glue_1.8.1          codetools_0.2-20    cowplot_1.2.0      
+[52] gtable_0.3.6        tibble_3.3.1        pillar_1.11.1      
+[55] R6_2.6.1            httr2_1.3.0         lattice_0.23-1     
+[58] readr_2.2.0         rentrez_1.2.4       R.methodsS3_1.8.2  
+[61] png_0.1-9           memoise_2.0.1       Rcpp_1.1.2         
+[64] fastmatch_1.1-8     SparseArray_1.12.3  pkgconfig_2.0.3    
